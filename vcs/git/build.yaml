@@ -1,0 +1,12 @@
+image: opensuse/leap
+
+prelude:
+- zypper update
+- zypper install -y 
+
+steps:
+- 
+
+includes:
+- 
+

@@ -1,0 +1,13 @@
+image: opensuse/leap
+
+prelude:
+- zypper refresh
+- zypper install -y clang cmake3 gcc-c++ make ncurses-devel wget tar xz
+- wget https://github.com/fish-shell/fish-shell/releases/download/{{.Values.version}}/fish-{{.Values.version}}.tar.xz -O fish.tar.xz
+- tar xJf fish.tar.xz
+
+steps:
+- cd fish-{{.Values.version}} && cmake . && make -j$(nproc) && make install
+
+includes:
+- /usr/bin/fish
