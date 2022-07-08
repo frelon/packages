@@ -1,14 +1,10 @@
 image: opensuse/leap
 
 prelude:
-- zypper update
+- zypper refresh
 - zypper install -y make wget tar gzip unzip ninja libtool autoconf automake cmake gcc-c++ gettext-tools curl
 - wget https://github.com/neovim/neovim/archive/refs/tags/v{{.Values.version}}.tar.gz -O neovim.tar.gz
 - tar xzf neovim.tar.gz
 
 steps:
-- cd neovim-{{.Values.version}} && make CMAKE_BUILD_TYPE=Release && make install
-
-includes:
-- /usr/bin/nvim
-
+- cd neovim-{{.Values.version}} && make -j$(nproc) CMAKE_BUILD_TYPE=Release && make install

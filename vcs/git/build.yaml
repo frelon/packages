@@ -1,12 +1,11 @@
 image: opensuse/leap
 
 prelude:
-- zypper update
-- zypper install -y 
+- zypper refresh
+- zypper install -y wget xz tar make autoconf gcc zlib-devel tclsh gettext-tools
+- wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-{{.Values.version}}.tar.xz -O git.tar.xz
+- tar xJf git.tar.xz
 
 steps:
-- 
-
-includes:
-- 
+- cd git-{{.Values.version}} && make configure && ./configure --prefix=/usr && make -j$(nproc) all install
 
