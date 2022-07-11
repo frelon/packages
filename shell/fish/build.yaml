@@ -7,7 +7,7 @@ prelude:
 - tar xJf fish.tar.xz
 
 steps:
-- cd fish-{{.Values.version}} && cmake . && make -j$(nproc) && make install
+- cd fish-{{.Values.version}} && cmake -DCMAKE_INSTALL_PREFIX=/usr . && make -j$(nproc) && make install
 
 includes:
 - /usr/bin/fish

@@ -16,4 +16,4 @@ build:
 
 .PHONY: publish
 publish:
-	$(LUET) $(DEBUG) create-repo --name $(REPO) --type=docker --from-metadata --push-images --output $(REPO_URL)
+	$(LUET) $(DEBUG) create-repo --name $(REPO) --type=docker --force-push --from-metadata --push-images --output $(REPO_URL)

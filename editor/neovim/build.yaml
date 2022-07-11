@@ -7,4 +7,8 @@ prelude:
 - tar xzf neovim.tar.gz
 
 steps:
-- cd neovim-{{.Values.version}} && make -j$(nproc) CMAKE_BUILD_TYPE=Release && make install
+- cd neovim-{{.Values.version}} && make -j$(nproc) CMAKE_BUILD_TYPE=Release && make CMAKE_INSTALL_PREFIX=/usr install
+
+includes:
+- /usr/bin/nvim
+- /usr/share/nvim
