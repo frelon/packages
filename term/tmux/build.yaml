@@ -1,0 +1,14 @@
+image: opensuse/tumbleweed
+
+prelude:
+- zypper refresh
+- zypper install -y wget tar gzip make gcc pkgconf libevent-devel ncurses-devel
+- wget https://github.com/tmux/tmux/releases/download/{{.Values.version}}/tmux-{{.Values.version}}.tar.gz -O tmux.tar.gz
+- tar xzf tmux.tar.gz
+
+steps:
+- cd tmux-{{.Values.version}} && ./configure --prefix=/usr && make -j$(nproc) && make install
+
+# includes:
+# - /usr/bin/tmux
+

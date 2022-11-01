@@ -1,0 +1,14 @@
+image: opensuse/tumbleweed
+
+prelude:
+- zypper refresh
+- zypper install -y wget gzip tar make gcc zlib-devel libopenssl-devel
+- wget https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-{{ .Values.version }}p1.tar.gz -O openssh.tar.gz
+- tar xzf openssh.tar.gz
+
+steps:
+- cd openssh-{{.Values.version}}p1 && ./configure --prefix=/usr && make -j$(nproc)
+
+# includes:
+# - /usr/bin/ssh
+

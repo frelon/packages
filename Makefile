@@ -12,7 +12,8 @@ all: build
 
 .PHONY: build
 build:
-	$(LUET) $(DEBUG) build --backend-args=\"--platform=linux/amd64,linux/arm64\" --backend-args=--push --image-repository $(REPO_URL) --push-final-images $(PACKAGES)
+	# $(LUET) $(DEBUG) build --backend-args=\"--platform=linux/amd64,linux/arm64\" --backend-args=--push --image-repository $(REPO_URL) --push-final-images $(PACKAGES)
+	$(LUET) $(DEBUG) build --backend-args=\"--platform=linux/arm64\" --backend-args=--load --backend-args=--no-cache --image-repository $(REPO_URL) --push-final-images $(PACKAGES)
 
 .PHONY: publish
 publish:
